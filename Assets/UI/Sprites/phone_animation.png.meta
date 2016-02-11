@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 809c9d4a499bdfb41b1529448f1794dc
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: phone_animation
+    21300002: phone_animation_0
+    21300004: phone_animation_1
+    21300006: phone_animation_2
+    21300008: phone_animation_3
+    21300010: phone_animation_4
+    21300012: phone_animation_5
+    21300014: phone_animation_6
+    21300016: phone_animation_7
+    21300018: phone_animation_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 512
+    textureFormat: -1
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: phone_animation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 157
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_1
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 157
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_2
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 157
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_3
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 157
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_4
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 157
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_5
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 157
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_7
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: phone_animation_8
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 0
+        width: 305
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

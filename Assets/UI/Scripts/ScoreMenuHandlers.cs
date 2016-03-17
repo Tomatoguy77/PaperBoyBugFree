@@ -8,6 +8,7 @@ using Extensions;
 
 public class ScoreMenuHandlers : MonoBehaviour 
 {
+    //obselete -sebas
 	private string HighscoreURL = "http://www.basegames.nl/highscores.pl";
 
 	public Text EndScoreText;
@@ -47,8 +48,12 @@ public class ScoreMenuHandlers : MonoBehaviour
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
+    public void ShowOptionsIngame() {
+        
+    }
 	public void ShowScoreMenu()
 	{
+        Debug.Log("show");
 		IsVisible = true;
 
 		Anim.SetTrigger("StartScoreFadeIn");

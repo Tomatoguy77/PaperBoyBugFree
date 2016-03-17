@@ -40,10 +40,9 @@ public class GameManager : MonoBehaviour
 			ObjectSpawner.UpdateSpawner();
 			
 			Global.Instance.DistanceScore += (Global.Instance.Speed * Global.Instance.ComboMultiplier) * Time.deltaTime;
-
-			Global.Instance.Speed = Global.Instance.InitialSpeed + (Global.Instance.DistanceScore * 0.0075F);
-		}
-		else
+            //TODO- code to gradually increase game speed and remove al this unnecessary code from the U    pdate function
+        }
+        else
 		{
 			Global.Instance.Speed = 0;
 

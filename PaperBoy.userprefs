@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\1. Concepts And Prototypes\SpaceExplore\Assets\Scripts\Player\CameraBehaviour.cs">
+    <Files>
+      <File FileName="C:\Users\Administrator\Desktop\astronaught\Assets\Scripts\Enemy\EnemyBehaviour.cs" Line="37" Column="24" />
+      <File FileName="..\..\..\1. Concepts And Prototypes\SpaceExplore\Assets\Scripts\Player\CameraBehaviour.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

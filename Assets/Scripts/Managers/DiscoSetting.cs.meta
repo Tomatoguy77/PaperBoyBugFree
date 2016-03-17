@@ -1,8 +1,13 @@
 fileFormatVersion: 2
 guid: 195dd346e5bd1f542b16a16fdebad703
+timeCreated: 1458150677
+licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - DiscoClip: {fileID: 8300000, guid: 0ff8cb004605b7c48bcefc4ca81b77ff, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

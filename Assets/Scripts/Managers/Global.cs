@@ -4,6 +4,7 @@ using System.Collections;
 public class Global 
 {
 	private static Global instance;
+
 	public static Global Instance
 	{
 		get
@@ -20,6 +21,8 @@ public class Global
 	}
 
 	private float _speed = 1F;
+
+
 	public float Speed
 	{
 		get { return _speed; }

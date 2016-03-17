@@ -10,7 +10,7 @@ public class HouseBehaviour : BasicObstacleBehaviour
 
 	public Sprite[] GoodHouseSprites;
 	public Sprite[] BadHouseSprites;
-
+    [SerializeField ]
 	private bool IsGoodHouse = true;
 
 	public GameObject[] Trees;
@@ -24,7 +24,12 @@ public class HouseBehaviour : BasicObstacleBehaviour
 	List<GameObject> SpawnedTrees;
 
 	private GameObject TreeContainer;
+    private ParticleSystem _goodParticles;
 
+    void Start() {
+        _goodParticles =  transform.FindChild("Particle System").GetComponent<ParticleSystem>();
+
+    }
 	public void SetRight(bool IsRight)
 	{
 		this.IsRight = IsRight;
@@ -54,20 +59,22 @@ public class HouseBehaviour : BasicObstacleBehaviour
 
 		if(IsGoodHouse)
 		{
-			Global.Instance.Dollars++;
+            //  transform.FindChild("Particle System").GetComponent<ParticleSystem>().Play();
+            _goodParticles.Play();
+            Global.Instance.Dollars++;
 
 			Global.Instance.ComboMultiplier += 0.01F;
 		}
 		else
 		{
-			Global.Instance.ComboMultiplier = 1F;
+
+            Global.Instance.ComboMultiplier = 1F;
 
 			GameObject Dog = (GameObject)Instantiate (Resources.Load("Obstacles/DogObstacle"), transform.position, Quaternion.identity);
 			Dog.GetComponent<DogObstacle>().IsRunningLeft = IsRight;
 		}
 
 		GetComponent<Animator>().SetTrigger("Deliver");
-		transform.FindChild("Particle System").GetComponent<ParticleSystem>().Play();
 
 		HasDelivered = true;
 	}

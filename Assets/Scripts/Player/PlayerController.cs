@@ -9,6 +9,8 @@ public class PlayerController : CacheMB
 
 	private Animator Anim;
 
+    private Rigidbody2D rb;
+
 	private PickupType CurrentPickup = PickupType.None;
 
 	private float GlobalInitSpeed;
@@ -17,48 +19,31 @@ public class PlayerController : CacheMB
 
 	public ParticleSystem ColaBottleParticles;
 
-	void Start()
+    private float regularSpeed = 5;
+    private float lerpTime = 1f;
+    private float currentLerpTime;
+
+    private bool _colaPickupActive;
+    void Start()
 	{
 		Anim = GetComponent<Animator>();
-	}
+        rb = GetComponent<Rigidbody2D>();
 
-	void Update () 
+    }
+
+    void Update () 
 	{
-		if(Global.Instance.IsPlaying)
+
+        if (Global.Instance.IsPlaying)
 		{
-			if(Anim != null)
-				Anim.enabled = true;
-			if(ColaBottleParticles != null && CurrentPickup == PickupType.ColaBottle)
-			{
-				ColaBottleParticles.enableEmission = true;
-				ColaBottleParticles.GetComponent<Renderer>().material.mainTexture = transform.FindChild("Sprite").GetComponent<Renderer>().material.mainTexture;;
-			}
-			else if(ColaBottleParticles != null)
-				ColaBottleParticles.enableEmission = false;
-
-			if(CurrentPickup == PickupType.ColaBottle)
-			{
-				StartColaPickup();
-
-				ColaTimeout += Time.deltaTime;
-				if(ColaTimeout >= 3)
-				{
-					ResetPickup();
-				}
-			}
-
+            //cola bottle
+            ColaPickup();
+            //cola
+            PlayerMovement();
 			#region Movement
 			
 			#if UNITY_STANDALONE || UNITY_EDITOR		
-
-			Speed = 15F;
-			GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal") * Speed, 0);		
-
-			if(Input.GetKeyDown(KeyCode.UpArrow))
-				Global.Instance.Speed++;
-			if(Input.GetKeyDown(KeyCode.DownArrow))
-				Global.Instance.Speed--;
-			
+         
 			#elif UNITY_ANDROID || UNITY_IOS
 			
 			Speed = 20F;		
@@ -120,7 +105,6 @@ public class PlayerController : CacheMB
 					}
 				}
 			}
-			//honestly dont know what this is - Sebas
 			#elif UNITY_ANDROID || UNITY_IOS
 			
 			if(Input.touchCount == 1)
@@ -182,7 +166,61 @@ public class PlayerController : CacheMB
 			transform.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		}
 	}
+    //movement
+    private void PlayerMovement() {
+        //	Speed = 15F;
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * Speed, 0);
 
+        rb.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * Speed * 4);
+
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
+            Global.Instance.Speed += 0.05f;
+
+        }
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            Global.Instance.Speed -= 0.05f;
+        }
+        if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow))
+        {
+            //use lerp to restore the speed of the player if no keys are pressed and the cola pickup is not active
+            LerpMovement();
+        }
+
+    }
+
+    private void LerpMovement() {
+        if (_colaPickupActive == false)
+            Global.Instance.Speed = Mathf.Lerp(2f, 6f, lerpTime);
+
+    }
+    //pickups
+    //cola
+
+    private void ColaPickup() {
+        if (Anim != null)
+            Anim.enabled = true;
+        if (ColaBottleParticles != null && CurrentPickup == PickupType.ColaBottle)
+        {
+            ColaBottleParticles.enableEmission = true;
+
+            //ColaBottleParticles.GetComponent<Renderer>().material.mainTexture = transform.FindChild("Sprite").GetComponent<Renderer>().material.mainTexture; ;
+        }
+        else if (ColaBottleParticles != null)
+            ColaBottleParticles.enableEmission = false;
+
+        if (CurrentPickup == PickupType.ColaBottle)
+        {
+            StartColaPickup();
+
+            ColaTimeout += Time.deltaTime;
+            if (ColaTimeout >= 3)
+            {
+                ResetPickup();
+            }
+        }
+    }
 	public void SetPickup(PickupType Type)
 	{
 		if(CurrentPickup == PickupType.None) // If the player does not have a pickup
@@ -197,6 +235,7 @@ public class PlayerController : CacheMB
 
 				case PickupType.ColaBottle:
 					GlobalInitSpeed = Global.Instance.Speed;
+                    _colaPickupActive = true;
 				break;
 				
 				default: break;
@@ -205,11 +244,13 @@ public class PlayerController : CacheMB
 	}
 	private void ResetPickup()
 	{
+        Debug.Log("reset");
 		GetComponent<BoxCollider2D>().enabled = true;
 		
 		Anim.SetBool("Cycling", false);
 
 		CurrentPickup = PickupType.None;
+        _colaPickupActive = false;
 	}
 
 	void StartColaPickup()
